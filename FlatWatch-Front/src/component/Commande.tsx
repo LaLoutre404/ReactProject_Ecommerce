@@ -1,4 +1,4 @@
-
+import { GetOrderList } from "./GetOrderList";
 
 
 function Commande() {
@@ -27,62 +27,9 @@ function Commande() {
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 transition-colors">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Commande1
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Jaeger LeCoultre
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        $2999
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        05/03/2023
-                                    </td>
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Commande2
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        2
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Rollex
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        $1999
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        03/03/2023
-                                    </td>
-                                </tr>
-                                <tr className="bg-white dark:bg-gray-800">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Commande3
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        2
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        Audemart-Piguet
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        $9999
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        07/03/2023
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <GetOrderList />
                         </table>
                     </div>
-
                 </div>
             </main>
         </div>
