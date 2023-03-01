@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import watch_1 from '../assets/shop/watch_1.webp'
 import { db, firebaseConfig } from "../../firebaseconfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { getDatabase, ref, onValue} from "firebase/database";
+
 
 
     interface Product {
@@ -9,12 +11,6 @@ import { collection, query, where, getDocs } from "firebase/firestore";
         prix: number, 
         url_image: string
     }
-    
-    const q = query(collection(db, "Produit"));
-    const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-    });
     
     export const getProductList = () => {
         const [productList, setProductList] = useState<Product[]>([]); 
@@ -26,6 +22,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
             </div>
         )
     }
+
 function Shop() {
     
     return (
