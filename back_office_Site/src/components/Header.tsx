@@ -6,7 +6,7 @@ export type HyperLinkProps =  {
    }[]
 }
 
-export const MyHeader = (links: HyperLinkProps) => {
+const MyHeader = (links: HyperLinkProps) => {
     
     return (
         <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
@@ -33,4 +33,4 @@ export const MyHeader = (links: HyperLinkProps) => {
         </nav>
     )
 }
-
+ export default MyHeader
