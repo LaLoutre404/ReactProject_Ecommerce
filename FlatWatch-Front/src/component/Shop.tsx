@@ -1,9 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import watch_1 from '../assets/shop/watch_1.webp'
+import { db, firebaseConfig } from "../../firebaseconfig";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
+
+    interface Product {
+        nom_produit: string, 
+        prix: number, 
+        url_image: string
+    }
+    
+    const q = query(collection(db, "Produit"));
+    const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+    });
+    
+    export const getProductList = () => {
+        const [productList, setProductList] = useState<Product[]>([]); 
+        return(
+            <div>
+                ProductList : {productList.map((product, index) => {
+                    return <div key={index}>{product.nom_produit}</div>
+                })} 
+            </div>
+        )
+    }
 function Shop() {
-
-
+    
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -17,7 +41,7 @@ function Shop() {
                         <div className="mt-4 flex justify-between">
                             <div>
                                 <h3 className="text-sm text-gray-700">
-                                    <a href="#">
+                                    <a href="/product">
                                         <span aria-hidden="true" className="absolute inset-0"></span>
                                         Montre stylé
                                     </a>
