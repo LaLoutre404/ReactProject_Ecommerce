@@ -14,7 +14,6 @@ function App() {
   return (
     <div>
       <Header />
-
       <div>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,7 +21,7 @@ function App() {
         <Route path="/login" element={<Authentification />} />
         <Route path="/order" element={<Commande />} />
         <Route path="/cart" element={<Panier />} />
-        <Route path="/product" element={<GetProduct />} />
+        <Route path="/shop/:name" element={<GetProduct />} />
       </Routes>
       </div>
     </div>

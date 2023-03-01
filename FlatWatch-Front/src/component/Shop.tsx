@@ -6,22 +6,7 @@ import { getDatabase, ref, onValue} from "firebase/database";
 import {GetProductList} from './GetProductList'
 
 
-    interface Product {
-        nom_produit: string, 
-        prix: number, 
-        url_image: string
-    }
-    
-    export const getProductList = () => {
-        const [productList, setProductList] = useState<Product[]>([]); 
-        return(
-            <div>
-                ProductList : {productList.map((product, index) => {
-                    return <div key={index}>{product.nom_produit}</div>
-                })} 
-            </div>
-        )
-    }
+   
 
 function Shop() {
     

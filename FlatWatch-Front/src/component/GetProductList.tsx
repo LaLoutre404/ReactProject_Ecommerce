@@ -7,7 +7,8 @@ interface Product {
     nom_produit: string,
     prix: number,
     url_image: string,
-    disponible: boolean;
+    disponible: boolean,
+    id: number,
 }
 
 export const GetProductList = () => {
@@ -39,7 +40,7 @@ export const GetProductList = () => {
                             <div className="mt-4 flex justify-between">
                                 <div>
                                     <h3 className="text-sm text-gray-700">
-                                        <a href="/product">
+                                    <a href={"/shop/" + product.nom_produit}>
                                             <span aria-hidden="true" className="absolute inset-0"></span>
                                             {product.nom_produit}
                                         </a>
