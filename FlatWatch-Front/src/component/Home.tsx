@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import HeroImage from '../assets/hero-image.png';
 import Carousel from './Carousel'
+import {GetProductList} from './GetProductList';
 
 function Home() {
     return (
@@ -60,7 +61,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                
+                <GetProductList />
             </div>
         </section>
     )
