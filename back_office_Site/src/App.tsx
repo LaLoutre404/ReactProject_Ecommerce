@@ -15,8 +15,8 @@ function App() {
             <MyHeader links={linkprops} />
             <Routes>
                 <Route path='/' element={<CommandList />} />
-                <Route path='/statistique' element={<ProductList />} />
-                <Route path='/liste-produit' element={<StatsPage />}></Route>
+                <Route path='/statistique' element={<StatsPage />} />
+                <Route path='/liste-produit' element={<ProductList />}></Route>
             </Routes>
         </>
     )
