@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import avatar from '../assets/avatar.png'
+import logo from '../assets/logo.png'
 
 
 function Header() {
@@ -9,6 +10,7 @@ function Header() {
       <nav className="bg-light-purple border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <a href="/" className="flex items-center">
+            <img src={ logo } className='w-8 h-8'/>
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">FlatWatch</span>
           </a>
           <div className="flex items-center md:order-2">
