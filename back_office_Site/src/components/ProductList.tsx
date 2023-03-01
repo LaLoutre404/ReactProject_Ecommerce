@@ -1,3 +1,5 @@
+import { GetProductList } from "./FirebaseProductList";
+
 function ProductList () {
     return (
         <div>
@@ -84,9 +86,10 @@ function ProductList () {
                             </tbody>
                         </table>
                     </div>
-
+                
                 </div>
             </main>
+            <GetProductList></GetProductList>
         </div>
     )
 }
