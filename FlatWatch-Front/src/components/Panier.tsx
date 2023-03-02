@@ -2,7 +2,7 @@ import { createContext, useState } from 'react'
 
 function Panier() {
 
-    const [showModal, setShowModal] = useState(false);
+    // Pas utiliser pour le moment
  
     return (
         <>

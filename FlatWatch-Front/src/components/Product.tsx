@@ -17,7 +17,7 @@ interface Product {
 
 
 export const GetProduct = () => {
-
+    // on utilise les fonctions du context pour ajouter des produits au panier (pas fonctionnel pour le moment)
     const { addToCart, removeItem } = useContext(DataContext);
 
     const addItemToCart = (product: Product) => {
@@ -28,6 +28,7 @@ export const GetProduct = () => {
         // removeItem(product);
     };
 
+    //on récupere le nom en parametre de l'url pour faire notre requete a la bdd
     const { name } = useParams();
 
     const [productList, setProductList] = useState<Product[]>([]);
@@ -90,6 +91,8 @@ export const GetProduct = () => {
                                 <p className="text-base text-gray-900">{product.description}</p>
                             </div>
                         </div>
+
+                        {/* Text non modifier par la BDD */}
                         <div className="mt-10">
                             <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
 
@@ -99,7 +102,6 @@ export const GetProduct = () => {
                                 </ul>
                             </div>
                         </div>
-
                         <div className="mt-10">
                             <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
