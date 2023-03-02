@@ -5,27 +5,30 @@ import {
     signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../firebaseconfig";
+import { useAuth } from '../context/AuthentificationProvider';
 
-function Authentification() {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+const Authentification = (): JSX.Element => {
 
+
+    const { signIn } = useAuth()
     const navigate = useNavigate()
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+
 
     const onLogin = () => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                console.log(user);
-                navigate('/')
+        try {
+            signIn(email, password).then((value) => {
+                console.log(value.user)
+                if (value.user.email) {
+                    navigate("/")
+                }
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-            });
+        }
+        catch (error: unknown) {
+            console.log(error)
+        }
     }
 
     return (
@@ -60,7 +63,7 @@ function Authentification() {
                                 </div>
                                 <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                             </div>
-                            <button type="button" onClick={onLogin} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                            <button type="button" onClick={onLogin} className="w-full bg-light-purple text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Don’t have an account yet? <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
                             </p>

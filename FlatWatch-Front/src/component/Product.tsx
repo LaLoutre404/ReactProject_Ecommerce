@@ -68,7 +68,7 @@ export const GetProduct = () => {
                 </nav>
                 <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
                     <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-                        <img src={product.url_image} alt="Two each of gray, white, and black shirts laying flat." className="h-full w-full object-cover object-center" />
+                        <img src={product.url_image} className="h-full w-full object-cover object-center" />
                     </div>
                 </div>
                 <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
