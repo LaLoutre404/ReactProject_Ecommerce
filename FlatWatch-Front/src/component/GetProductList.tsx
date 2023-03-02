@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import { collection, getDocs, query, where} from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-interface Product {
+export interface Product {
     nom_produit: string,
     prix: number,
     url_image: string,
@@ -36,7 +36,7 @@ export const GetProductList = () => {
                     <>
                         <div key={index} className="group relative">
                             <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                                <img src={product.url_image} alt="Front of men&#039;s Basic Tee in black." className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+                                <img src={product.url_image} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
                             </div>
                             <div className="mt-4 flex justify-between">
                                 <div>

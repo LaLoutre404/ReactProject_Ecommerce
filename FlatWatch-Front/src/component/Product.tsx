@@ -1,9 +1,10 @@
 import watch_1 from '../assets/shop/watch_1.webp'
 import { db } from "../../firebaseconfig";
 import 'firebase/firestore';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useParams } from 'react-router-dom';
+import { DataContext } from "../context/contextPanier";
 
 interface Product {
     nom_produit: string,
@@ -13,7 +14,20 @@ interface Product {
     description:string,
 }
 
+
+
 export const GetProduct = () => {
+
+    const { addToCart, removeItem } = useContext(DataContext);
+
+    const addItemToCart = (product: Product) => {
+       // addToCart(product);
+    };
+    
+    const removeItemFromCart = (product: Product) => {
+        // removeItem(product);
+    };
+
     const { name } = useParams();
 
     const [productList, setProductList] = useState<Product[]>([]);
@@ -65,7 +79,7 @@ export const GetProduct = () => {
                         <h2 className="sr-only">Product information</h2>
                         <p className="text-3xl tracking-tight text-gray-900">${product.prix}</p>
                         <form className="mt-10">
-                            <button type='button' className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-dark-purple py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to Cart</button>
+                            <button type='button' onClick={() => addItemToCart(product)} className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-dark-purple py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to Cart</button>
                         </form>
                     </div>
                     <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
@@ -99,7 +113,6 @@ export const GetProduct = () => {
             )
             })}
         </div>
-
     )
 }
 
