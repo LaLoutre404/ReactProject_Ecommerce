@@ -6,7 +6,7 @@ import Shop from './component/Shop'
 import Authentification from './component/Authentification'
 import Commande from './component/Commande'
 import Panier from './component/Panier';
-import Product from './component/Product'
+import GetProduct from './component/Product'
 
 function App() {
 
@@ -14,7 +14,6 @@ function App() {
   return (
     <div>
       <Header />
-
       <div>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,7 +21,7 @@ function App() {
         <Route path="/login" element={<Authentification />} />
         <Route path="/order" element={<Commande />} />
         <Route path="/cart" element={<Panier />} />
-        <Route path="/product" element={<Product />} />
+        <Route path="/shop/:name" element={<GetProduct />} />
       </Routes>
       </div>
     </div>
