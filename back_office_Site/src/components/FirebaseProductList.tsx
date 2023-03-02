@@ -34,9 +34,9 @@ export const GetProductList = () => {
     }
 
     useEffect(() => {
-        fetchDoc(),
-        []
-    }); 
+        fetchDoc(); 
+            
+    }, []);
 
     return (
         <div className="grid gap-4 grid-cols-3">

@@ -17,6 +17,7 @@ export const GetCommandeList = () => {
     const [orderList, setOrderList] = useState<Commande[]>([]);
 
     const fetchDoc = async () => {
+        console.log("hello")
         await getDocs(collection(db, 'Commande'))
             .then((querysnapShot) => {
                 const newListDocs: Commande[] = querysnapShot.docs
@@ -35,9 +36,9 @@ export const GetCommandeList = () => {
     }
 
     useEffect(() => {
-        fetchDoc(),
-            []
-    });
+        fetchDoc(); 
+            
+    }, []);
 
     return (
         <div>
