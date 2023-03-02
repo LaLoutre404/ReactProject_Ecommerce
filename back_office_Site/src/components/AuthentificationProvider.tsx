@@ -60,6 +60,6 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
     resetPassword,
     auth,
   }
-  
+
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider> 
 }

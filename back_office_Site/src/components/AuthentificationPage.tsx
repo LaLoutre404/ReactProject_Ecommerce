@@ -1,39 +1,31 @@
 import { useState } from 'react'
-import logo from '../assets/logo.png'
-import { Navigate, useNavigate } from "react-router-dom";
-import {
-    signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "./firebaseconfig";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from './AuthentificationProvider';
 
-function Authentification() {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+const Authentification = (): JSX.Element => {
 
+    
+    const {signIn} = useAuth()
     const navigate = useNavigate()
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    
 
     const onLogin = () => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                console.log(user);
-                navigate('/')
-
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-            });
+        try {
+            signIn(email, password)
+            navigate('/dashboard')
+        }
+        catch (error: unknown) {
+            console.log(error)
+        }
     }
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <a href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                    <img className="w-8 h-8 mr-2" src={logo} alt="logo" />
                     FlatWatch
                 </a>
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
