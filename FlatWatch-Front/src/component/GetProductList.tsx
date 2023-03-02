@@ -1,6 +1,6 @@
 import { db } from "../../firebaseconfig";
 import 'firebase/firestore';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where} from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 interface Product {
@@ -14,15 +14,16 @@ interface Product {
 export const GetProductList = () => {
     const [productList, setProductList] = useState<Product[]>([]);
 
+    const q = query(collection(db, "Produit"), where("disponible", "==", true)); 
+
     const fetchDoc = async () => {
-        await getDocs(collection(db, 'Produit'))
+        await getDocs(q)
             .then((querysnapShot) => {
                 const newListDocs: Product[] = querysnapShot.docs
                     .map((doc) => ({ ...doc.data() as Product }));
                 setProductList(newListDocs);
             })
     }
-
 
     useEffect(() => {
         fetchDoc();

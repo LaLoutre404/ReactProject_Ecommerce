@@ -50,8 +50,6 @@ export const GetOrderList = () => {
                         </th>
                     </tr>
                 </thead>
-
-
                 {orderList.map((order, index) => {
                     return (
                         <tbody key={index}>
@@ -74,7 +72,6 @@ export const GetOrderList = () => {
                             </tr>
                         </tbody>
                     )
-
                 })}
             </table>
         </div>
