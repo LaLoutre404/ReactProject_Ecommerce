@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Route, Routes } from "react-router-dom"
-import Header from './component/Header';
-import Home from './component/Home';
-import Shop from './component/Shop'
-import Authentification from './component/Authentification'
-import Commande from './component/Commande'
-import Panier from './component/Panier';
-import GetProduct from './component/Product'
+import Header from './components/Header';
+import Home from './components/Home';
+import Shop from './components/Shop'
+import Authentification from './components/Authentification'
+import Commande from './components/Commande'
+import Panier from './components/Panier';
+import GetProduct from './components/Product'
 import { AuthProvider } from './context/AuthentificationProvider';
 
 function App() {
