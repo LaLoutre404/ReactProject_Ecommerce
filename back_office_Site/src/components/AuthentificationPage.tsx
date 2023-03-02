@@ -5,17 +5,21 @@ import { useAuth } from './AuthentificationProvider';
 
 const Authentification = (): JSX.Element => {
 
-    
-    const {signIn} = useAuth()
+
+    const { signIn } = useAuth()
     const navigate = useNavigate()
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
-    
+
 
     const onLogin = () => {
         try {
-            signIn(email, password)
-            navigate('/dashboard')
+            signIn(email, password).then((value) => {
+                console.log(value.user)
+                if (value.user.email) {
+                    navigate("/dashboard")
+                }
+            })
         }
         catch (error: unknown) {
             console.log(error)

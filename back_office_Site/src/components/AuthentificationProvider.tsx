@@ -24,8 +24,7 @@ export interface UserContextState {
 export const UserStateContext = createContext<UserContextState>({} as UserContextState);
 export const AuthContext = React.createContext<AuthContextModel>(
   {} as AuthContextModel,
-)
-
+);
 export function useAuth(): AuthContextModel {
   return useContext(AuthContext);
 }
