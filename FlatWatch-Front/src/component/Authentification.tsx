@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import {
     signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "../../firebaseconfig";
+import { auth } from "./firebaseconfig";
 import { useAuth } from '../context/AuthentificationProvider';
 
 

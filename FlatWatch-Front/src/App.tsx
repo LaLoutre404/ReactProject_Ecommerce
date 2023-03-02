@@ -11,7 +11,6 @@ import { AuthProvider } from './context/AuthentificationProvider';
 
 function App() {
 
-
   return (
     <div>
       <AuthProvider>
@@ -27,9 +26,7 @@ function App() {
           </Routes>
         </div>
       </AuthProvider>
-
     </div>
-
   )
 }
 

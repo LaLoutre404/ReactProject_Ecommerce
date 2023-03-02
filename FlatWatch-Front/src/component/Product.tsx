@@ -1,5 +1,5 @@
 import watch_1 from '../assets/shop/watch_1.webp'
-import { db } from "../../firebaseconfig";
+import { db } from "./firebaseconfig";
 import 'firebase/firestore';
 import { useEffect, useState, useContext } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import watch_1 from '../assets/shop/watch_1.webp'
-import { db, firebaseConfig } from "../../firebaseconfig";
+import { db, firebaseConfig } from "./firebaseconfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { getDatabase, ref, onValue} from "firebase/database";
 import {GetProductList} from './GetProductList'
