@@ -8,7 +8,7 @@ interface Product {
     nom_produit: string,
     prix: number,
     url_image: string,
-    disponible: boolean;
+    disponible: boolean,
     id: string
 }
 
@@ -33,10 +33,10 @@ export const GetProductList = () => {
         });
     }
 
-    useEffect(() => {
-        fetchDoc(),
-        []
-    }); 
+    // useEffect(() => {
+    //     fetchDoc(),
+    //     []
+    // }); 
 
     return (
         <div className="grid gap-4 grid-cols-3">
