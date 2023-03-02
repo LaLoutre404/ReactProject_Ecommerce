@@ -1,18 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CommandList from './components/CommandDashboard'
 import ProductList from './components/ProductList'
 import StatsPage from './components/StatistiqueDashboard'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import { HyperLinkProps } from './components/Header'
 import MyHeader from './components/Header'
-import { AuthProvider } from './components/AuthentificationProvider'
+import { AuthProvider, useAuth } from './components/AuthentificationProvider'
 import Authentification from './components/AuthentificationPage'
 
 function App() {
     const linkprops = [{ href: "/dashboard", linkname: "Dashboard" },
     { href: "/statistique", linkname: "Statistique" },
     { href: "/liste-produit", linkname: "Liste Produits" }];
-
+    const navigate = useNavigate()
+    
     return (
         <>
             <AuthProvider>

@@ -8,6 +8,7 @@ interface Commande {
     quantite: number,
     nom_produit: string,
     prix: number,
+    nom_client: string, 
     date_livraison: string, 
 
 }
@@ -16,6 +17,7 @@ export const GetCommandeList = () => {
     const [orderList, setOrderList] = useState<Commande[]>([]);
 
     const fetchDoc = async () => {
+        console.log("hello")
         await getDocs(collection(db, 'Commande'))
             .then((querysnapShot) => {
                 const newListDocs: Commande[] = querysnapShot.docs
@@ -34,9 +36,9 @@ export const GetCommandeList = () => {
     }
 
     useEffect(() => {
-        fetchDoc(),
-            []
-    });
+        fetchDoc(); 
+            
+    }, []);
 
     return (
         <div>
@@ -58,6 +60,9 @@ export const GetCommandeList = () => {
                         <th scope="col" className="px-6 py-3">
                             Date de Livraison
                         </th>
+                        <th scope="col" className="px-6 py-3">
+                            Nom Client
+                        </th>
                     </tr>
                 </thead>
                 {orderList.map((order, index) => {
@@ -78,6 +83,9 @@ export const GetCommandeList = () => {
                                 </td>
                                 <td className="px-6 py-4">
                                     {order.date_livraison}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {order.nom_client}
                                 </td>
                             </tr>
                         </tbody>

@@ -12,7 +12,7 @@ const MyHeader = (links: HyperLinkProps) => {
     return (
         <div>
             {user?.email &&
-                < nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+                < nav className="bg-light-purple border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
                     <div className="container flex flex-wrap items-center justify-between mx-auto">
                         <a href="/" className="flex items-center">
                             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">FlatWatch</span>
@@ -22,11 +22,11 @@ const MyHeader = (links: HyperLinkProps) => {
                                 <span className="sr-only">Open user menu</span>
                             </button>
                         </div>
-                        <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
-                            <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <div className=" bg-light-purple items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
+                            <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-light-purple md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-light-purple dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                                 {links.links.map((link, index) => (
-                                    <li>
-                                        <a key={index} href={link.href} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{link.linkname}</a>
+                                    <li className="bg-light-purple">
+                                        <a key={index} href={link.href} className="block px-4 py-2 text-sm text-gray-700 hover:bg-light-purple dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{link.linkname}</a>
                                     </li>
                                 ))}
                             </ul>
