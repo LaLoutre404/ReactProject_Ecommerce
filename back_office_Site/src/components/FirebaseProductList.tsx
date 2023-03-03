@@ -15,6 +15,7 @@ interface Product {
 export const GetProductList = () => {
     const [productList, setProductList] = useState<Product[]>([]);
 
+    //on récupère tout les produits en bdd
     const fetchDoc = async () => {
         await getDocs(collection(db, 'Produit'))
             .then((querysnapShot) => {
@@ -24,6 +25,8 @@ export const GetProductList = () => {
             })
     }
 
+    //on modifie un element, à l'aide de sa reference
+    //on récupère une liste actualisé des produits en bdd
     const modifyDoc = async (product: Product, value: boolean) => {
         const oldProductRef = doc(db, "Produit", product.ref);
         updateDoc(oldProductRef, {

@@ -12,7 +12,7 @@ const Authentification = (): JSX.Element => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
 
-
+    //Verifie le mot de passe et le login et nous connecte si ça correspond
     const onLogin = () => {
         try {
             signIn(email, password).then((value) => {
@@ -27,6 +27,7 @@ const Authentification = (): JSX.Element => {
         }
     }
 
+    //Nous redirige directement sur la page de dashboard si le naviguateur a gardé l'utilisateur
     useEffect(() => {
         redirectIfLogged(), 
         []

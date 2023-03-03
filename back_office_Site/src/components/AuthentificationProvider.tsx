@@ -6,8 +6,6 @@ export interface AuthContextModel {
   auth: Auth
   user: User | null
   signIn: (email: string, password: string) => Promise<UserCredential>
-  signUp: (email: string, password: string) => Promise<UserCredential>
-  sendPasswordResetEmail?: (email: string) => Promise<void>
 }
 
 export interface AuthProviderProps {
@@ -36,16 +34,8 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
-  function signUp(email: string, password: string): Promise<UserCredential> {
-    return createUserWithEmailAndPassword(auth, email, password)
-  }
-
-  function resetPassword(email: string): Promise<void> {
-    return sendPasswordResetEmail(auth, email)
-  }
-
+  // on renvoie si un utilisateur est connecté
   useEffect(() => {
-    //function that firebase notifies you if a user is set
     const unsubsrcibe = auth.onAuthStateChanged((user) => {
       setUser(user)
     })
@@ -53,10 +43,8 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   }, [])
 
   const values = {
-    signUp,
     user,
     signIn,
-    resetPassword,
     auth,
   }
 

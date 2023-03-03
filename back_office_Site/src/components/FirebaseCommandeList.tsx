@@ -1,6 +1,6 @@
 import { db } from "./firebaseconfig";
 import 'firebase/firestore';
-import { collection, getDocs, updateDoc, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 interface Commande {
@@ -17,6 +17,7 @@ interface Commande {
 export const GetCommandeList = () => {
     const [orderList, setOrderList] = useState<Commande[]>([]);
 
+    //On récupère toute les commandes en bdd
     const fetchDoc = async () => {
         console.log("hello")
         await getDocs(collection(db, 'Commande'))
@@ -26,7 +27,7 @@ export const GetCommandeList = () => {
                 setOrderList(newListDocs);
             })
     }
-
+    //on supprime une commande en bdd et on récupère la liste actualisé des commandes
     const deleteDocument = async (commande: Commande) => {
         const productToDelete = doc(db, "Commande", commande.ref);
         await deleteDoc(productToDelete).then((querySnapshot) => {
