@@ -9,7 +9,7 @@ interface Product {
     prix: number,
     url_image: string,
     disponible: boolean,
-    id: string
+    ref: string
 }
 
 export const GetProductList = () => {
@@ -19,18 +19,20 @@ export const GetProductList = () => {
         await getDocs(collection(db, 'Produit'))
             .then((querysnapShot) => {
                 const newListDocs: Product[] = querysnapShot.docs
-                    .map((doc) => ({ ...doc.data() as Product }));
+                    .map((doc) => ({ ...doc.data() as Product}));
                 setProductList(newListDocs);
             })
     }
 
     const modifyDoc = async (product: Product, value: boolean) => {
-        const oldProductRef = doc(db, "Produit", product.nom_produit);
+        const oldProductRef = doc(db, "Produit", product.ref);
         updateDoc(oldProductRef, {
             disponible: value
         }).then((querySnapshot) => {
             console.log(querySnapshot); 
         });
+
+        fetchDoc(); 
     }
 
     useEffect(() => {
@@ -61,7 +63,7 @@ export const GetProductList = () => {
                                     }
                                 </a>
                                 <label className="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" value="" className="sr-only peer" />
+                                    <input type="checkbox" value="" checked={product.disponible} className="sr-only peer" onChange={() => modifyDoc(product, !product.disponible)}/>
                                     <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                 </label>
                             </div>
