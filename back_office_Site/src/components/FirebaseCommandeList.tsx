@@ -1,6 +1,6 @@
 import { db } from "./firebaseconfig";
 import 'firebase/firestore';
-import { collection, getDocs, updateDoc, doc} from "firebase/firestore";
+import { collection, getDocs, updateDoc, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 interface Commande {
@@ -8,8 +8,9 @@ interface Commande {
     quantite: number,
     nom_produit: string,
     prix: number,
-    nom_client: string, 
-    date_livraison: string, 
+    nom_client: string,
+    date_livraison: string,
+    ref: string
 
 }
 
@@ -26,18 +27,17 @@ export const GetCommandeList = () => {
             })
     }
 
-    const modifyDoc = async (commande: Commande, value: boolean) => {
-        const oldProductRef = doc(db, "Commande", commande.nom_produit);
-        updateDoc(oldProductRef, {
-            disponible: value
-        }).then((querySnapshot) => {
+    const deleteDocument = async (commande: Commande) => {
+        const productToDelete = doc(db, "Commande", commande.ref);
+        await deleteDoc(productToDelete).then((querySnapshot) => {
             console.log(querySnapshot);
         });
+        fetchDoc();
     }
 
     useEffect(() => {
-        fetchDoc(); 
-            
+        fetchDoc();
+
     }, []);
 
     return (
@@ -63,6 +63,9 @@ export const GetCommandeList = () => {
                         <th scope="col" className="px-6 py-3">
                             Nom Client
                         </th>
+                        <th scope="col" className="px-6 py-3">
+                            Supprimer la commande
+                        </th>
                     </tr>
                 </thead>
                 {orderList.map((order, index) => {
@@ -86,6 +89,11 @@ export const GetCommandeList = () => {
                                 </td>
                                 <td className="px-6 py-4">
                                     {order.nom_client}
+                                </td>
+                                <td className="px-6 py-4">
+                                    <button onClick={() => deleteDocument(order)} className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
+                                        supprimer
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>

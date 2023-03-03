@@ -20,8 +20,8 @@ function App() {
                 <MyHeader links={linkprops}></MyHeader>
                 <Routes>
                     <Route path='/' element={<Authentification />}></Route>
-                    <Route path='/dashboard' element={<CommandList />} />
-                    <Route path='/statistique' element={<StatsPage />} />
+                    <Route path='/dashboard' element={<CommandList/>} />
+                    <Route path='/statistique' element={<StatsPage/>} />
                     <Route path='/liste-produit' element={<ProductList />}></Route>
                 </Routes>
             </AuthProvider>
